@@ -28,6 +28,9 @@ void addNode()
     cout << "\nEnter the roll number of the student: ";
     cin >> nim;
 
+    // Step 1 : allocate memory for new
     Node *newNode = new Node();
+
+    // step 2 : assign value to the data field
     newNode->noMhs = nim;
 }
