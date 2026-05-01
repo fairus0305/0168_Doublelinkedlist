@@ -1,36 +1,46 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Node 
+struct node
 {
-public:
-    int noMhs;
-    Node *next;
-    Node *prev;
+    int info;
+    node *next;
+    node *prev;
 };
 
-class DoubleLinkedList
+class Doublelinkedlist
 {
 private:
-    Node *START;
+    node *START;
 
 public:
-    DoubleLinkedList()
+    Doublelinkedlist()
     {
         START = NULL;
     }
-};
 
-void addNode()
-{
-    int nim;
-    cout << "\nEnter the roll number of the student: ";
-    cin >> nim;
+    void addnode()
+    {
+        int nim;
+        cout << "\nEnter the roll number of the student: ";
+        cin >> nim;
 
-    // Step 1 : allocate memory for new
-    Node *newNode = new Node();
+        // Step 1: Allocate memory for new node
+        node *newnode = new node();
 
-    // step 2 : assign value to the data field
-    newNode->noMhs = nim;
+        // Step 2: Assign value to the data fields
+        newnode->info = nim;
+
+        // Step 3: Forward at beginning if list is empty or nim is smallest
+        if (START == NULL || nim <= START->info)
+        {
+            if (START != NULL && nim == START->info)
+            {
+                cout << "\nDuplicate roll numbers not allowed" << endl;
+                return;
+            }
+
+         
+        }
+    }
 }
