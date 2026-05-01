@@ -72,4 +72,13 @@ public:
             return;
         }
 
-       
+        // Step 9: insert between current and current->next
+        newNode->next = current->next; // Step 3a: newNode->next = current->next
+        newNode->prev = current;       // Step 3b: newNode->prev = current
+
+        // insert last node
+        if (current->next != NULL)
+            current->next->prev = newNode; // Step 3c: current->next->prev = newNode
+
+        current->next = newNode; // Step 3d: current->next = newNode
+    }
