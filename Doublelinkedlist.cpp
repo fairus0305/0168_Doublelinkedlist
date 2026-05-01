@@ -40,7 +40,19 @@ public:
                 return;
             }
 
-         
+            // Step 4: newnode.next = START
+            newnode->next = START;
+
+            // Step 5: START.prev = newnode (if START exists)
+            if (START != NULL)
+                START->prev = newnode;
+
+            // Step 6: newnode.prev = NULL
+            newnode->prev = NULL;
+
+            // Step 7: START = newnode
+            START = newnode;
+            return;
         }
     }
 }
