@@ -1,58 +1,75 @@
+// doubly linked list
 #include <iostream>
+#include <string>
 using namespace std;
 
-struct node
+class Node
 {
-    int info;
-    node *next;
-    node *prev;
+public:
+    int noMhs;
+    Node *next;
+    Node *prev;
 };
 
-class Doublelinkedlist
+class DoubleLinkedList
 {
 private:
-    node *START;
+    Node *START;
 
 public:
-    Doublelinkedlist()
+    DoubleLinkedList()
     {
         START = NULL;
     }
 
-    void addnode()
+    void addNode()
     {
         int nim;
         cout << "\nEnter the roll number of the student: ";
         cin >> nim;
 
         // Step 1: Allocate memory for new node
-        node *newnode = new node();
+        Node *newNode = new Node();
 
-        // Step 2: Assign value to the data fields
-        newnode->info = nim;
+        // Step 2: Assign value to the data field
+        newNode->noMhs = nim;
 
-        // Step 3: Forward at beginning if list is empty or nim is smallest
-        if (START == NULL || nim <= START->info)
+        // Step 3: Insert at beginning if list is empty or no is smallest
+        if (START == NULL || nim <= START->noMhs)
         {
-            if (START != NULL && nim == START->info)
+            if (START != NULL && nim == START->noMhs)
             {
-                cout << "\nDuplicate roll numbers not allowed" << endl;
+                cout << "Duplicate number not allowed" << endl;
                 return;
             }
 
-            // Step 4: newnode.next = START
-            newnode->next = START;
+            // Step 4: make newNode->next = START
+            newNode->next = START;
 
-            // Step 5: START.prev = newnode (if START exists)
+            // Step 5: START->prev = newNode (if START exists)
             if (START != NULL)
-                START->prev = newnode;
+                START->prev = newNode;
 
-            // Step 6: newnode.prev = NULL
-            newnode->prev = NULL;
+            // Step 6: newNode->prev = NULL
+            newNode->prev = NULL;
 
-            // Step 7: START = newnode
-            START = newnode;
+            // Step 7: START = newNode
+            START = newNode;
             return;
         }
-    }
-}
+
+        // insert in between nodes
+        // Step 8: locate position for insertion
+        Node *current = START;
+        while (current->next != NULL && current->next->noMhs < nim)
+        {
+            current = current->next;
+        }
+
+        if (current->next != NULL && nim == current->next->noMhs)
+        {
+            cout << "Duplicate roll numbers not allowed" << endl;
+            return;
+        }
+
+       
